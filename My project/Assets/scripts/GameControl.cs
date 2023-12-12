@@ -11,7 +11,7 @@ public class GameControl : MonoBehaviour
     public static GameControl Instance;
     public GameObject gameOverText;
     public TextMeshProUGUI ScoreText;
-    public TextMeshProUGUI Continue;
+    public float scrollspeed = -1.5f;
 
     public bool gameOver = false;
 
