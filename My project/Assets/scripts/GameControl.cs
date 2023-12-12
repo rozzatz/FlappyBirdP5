@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 using JetBrains.Annotations;
+using System;
 
 public class GameControl : MonoBehaviour
 {
@@ -16,15 +17,25 @@ public class GameControl : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
+    void Awake ()
     {
-        
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else if (Instance != this)
+        {
+            Destroy(gameObject);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (gameOver == true && Input.GetKeyDown(KeyCode.Space))
+        {
+            SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex);
+        }
     }
 
     public void BirdDied()

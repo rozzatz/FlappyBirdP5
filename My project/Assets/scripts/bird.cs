@@ -9,7 +9,7 @@ public class bird : MonoBehaviour
     public float upforce = 200f;
     private Animator anim;
 
-    // VIDEO 4/10 2:19
+   
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
@@ -21,7 +21,7 @@ public class bird : MonoBehaviour
     {
        if (isDead == false)
         {
-            if (Input.GetMouseButtonDown (0))
+            if (Input.GetKeyDown (KeyCode.Space))
             {
                 rb2d.velocity = Vector2.zero;
                 rb2d.AddForce(new Vector2(0, upforce));
@@ -34,5 +34,6 @@ public class bird : MonoBehaviour
     {
         isDead = true;
         anim.SetTrigger("DIe");
+        GameControl.Instance.BirdDied();
     }
 }
